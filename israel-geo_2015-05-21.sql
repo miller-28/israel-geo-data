@@ -27,12 +27,10 @@ CREATE TABLE IF NOT EXISTS `location_city` (
   `location_city_height` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`location_city_id`),
   KEY `fk_location_city_location_region1_idx` (`location_city_location_region_id`),
-  FULLTEXT KEY `location_city_name_heb` (`location_city_name_heb`),
-  FULLTEXT KEY `location_city_name_english` (`location_city_name_english`),
   CONSTRAINT `fk_location_city_location_region1` FOREIGN KEY (`location_city_location_region_id`) REFERENCES `location_region` (`location_region_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1241 DEFAULT CHARSET=utf8;
 
--- Dumping data for table israel_geo.location_city: ~1,221 rows (approximately)
+-- Dumping data for table israel_geo.location_city: ~1,235 rows (approximately)
 DELETE FROM `location_city`;
 /*!40000 ALTER TABLE `location_city` DISABLE KEYS */;
 INSERT INTO `location_city` (`location_city_id`, `location_city_name_heb`, `location_city_name_english`, `location_city_location_region_id`, `location_city_latitude`, `location_city_longitude`, `location_city_itm_cord`, `location_city_height`) VALUES
@@ -1279,11 +1277,10 @@ CREATE TABLE IF NOT EXISTS `location_major_region` (
   `location_major_region_id` int(11) NOT NULL AUTO_INCREMENT,
   `location_major_region_name_heb` varchar(255) NOT NULL,
   `location_major_region_name_english` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`location_major_region_id`),
-  FULLTEXT KEY `location_major_region_name_heb` (`location_major_region_name_heb`)
+  PRIMARY KEY (`location_major_region_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=702 DEFAULT CHARSET=utf8;
 
--- Dumping data for table israel_geo.location_major_region: ~7 rows (approximately)
+-- Dumping data for table israel_geo.location_major_region: ~8 rows (approximately)
 DELETE FROM `location_major_region`;
 /*!40000 ALTER TABLE `location_major_region` DISABLE KEYS */;
 INSERT INTO `location_major_region` (`location_major_region_id`, `location_major_region_name_heb`, `location_major_region_name_english`) VALUES
@@ -1308,7 +1305,7 @@ CREATE TABLE IF NOT EXISTS `location_neighborhood` (
   CONSTRAINT `FK1_location_neighborhood_location_city_id` FOREIGN KEY (`location_neighborhood_location_city_id`) REFERENCES `location_city` (`location_city_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2235 DEFAULT CHARSET=utf8;
 
--- Dumping data for table israel_geo.location_neighborhood: ~2,223 rows (approximately)
+-- Dumping data for table israel_geo.location_neighborhood: ~2,233 rows (approximately)
 DELETE FROM `location_neighborhood`;
 /*!40000 ALTER TABLE `location_neighborhood` DISABLE KEYS */;
 INSERT INTO `location_neighborhood` (`location_neighborhood_id`, `location_neighborhood_name_heb`, `location_neighborhood_location_city_id`) VALUES
@@ -3559,7 +3556,7 @@ CREATE TABLE IF NOT EXISTS `location_region` (
   CONSTRAINT `fk_location_region_location_major_region1` FOREIGN KEY (`location_region_location_major_region_id`) REFERENCES `location_major_region` (`location_major_region_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=702 DEFAULT CHARSET=utf8;
 
--- Dumping data for table israel_geo.location_region: ~52 rows (approximately)
+-- Dumping data for table israel_geo.location_region: ~53 rows (approximately)
 DELETE FROM `location_region`;
 /*!40000 ALTER TABLE `location_region` DISABLE KEYS */;
 INSERT INTO `location_region` (`location_region_id`, `location_region_name_heb`, `location_region_name_english`, `location_region_location_major_region_id`) VALUES
@@ -3626,11 +3623,10 @@ CREATE TABLE IF NOT EXISTS `location_street` (
   `location_street_name_heb` varchar(255) NOT NULL,
   PRIMARY KEY (`location_street_id`),
   KEY `FK1_location_street_location_city_id` (`location_street_location_city_id`),
-  FULLTEXT KEY `location_street_name_heb` (`location_street_name_heb`),
   CONSTRAINT `FK1_location_street_location_city_id` FOREIGN KEY (`location_street_location_city_id`) REFERENCES `location_city` (`location_city_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45190 DEFAULT CHARSET=utf8;
 
--- Dumping data for table israel_geo.location_street: ~42,544 rows (approximately)
+-- Dumping data for table israel_geo.location_street: ~45,397 rows (approximately)
 DELETE FROM `location_street`;
 /*!40000 ALTER TABLE `location_street` DISABLE KEYS */;
 INSERT INTO `location_street` (`location_street_id`, `location_street_location_city_id`, `location_street_name_heb`) VALUES
